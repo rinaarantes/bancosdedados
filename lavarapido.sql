@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Ago-2025 às 17:44
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Tempo de geração: 26/08/2025 às 14:11
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `atendimento`
+-- Estrutura para tabela `atendimento`
 --
 
 CREATE TABLE `atendimento` (
@@ -32,23 +32,23 @@ CREATE TABLE `atendimento` (
   `codcarro` int(11) NOT NULL,
   `totalgeral` decimal(10,2) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `atendimento`
+-- Despejando dados para a tabela `atendimento`
 --
 
 INSERT INTO `atendimento` (`codos`, `codcarro`, `totalgeral`, `data`) VALUES
-(1, 1, '30.00', '2025-07-01'),
-(2, 1, '50.00', '2025-07-10'),
-(3, 2, '130.00', '2025-07-05'),
-(4, 3, '100.00', '2025-07-03'),
-(5, 2, '100.00', '2025-08-01');
+(1, 1, 30.00, '2025-07-01'),
+(2, 1, 50.00, '2025-07-10'),
+(3, 2, 130.00, '2025-07-05'),
+(4, 3, 100.00, '2025-07-03'),
+(5, 2, 100.00, '2025-08-01');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `atendimento_servico`
+-- Estrutura para tabela `atendimento_servico`
 --
 
 CREATE TABLE `atendimento_servico` (
@@ -57,24 +57,24 @@ CREATE TABLE `atendimento_servico` (
   `codservico` int(11) NOT NULL,
   `qtde` int(11) NOT NULL,
   `totalserv` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `atendimento_servico`
+-- Despejando dados para a tabela `atendimento_servico`
 --
 
 INSERT INTO `atendimento_servico` (`codsatendimentoservico`, `codos`, `codservico`, `qtde`, `totalserv`) VALUES
-(1, 1, 1, 1, '30.00'),
-(2, 2, 2, 1, '50.00'),
-(3, 3, 2, 1, '50.00'),
-(4, 3, 3, 1, '100.00'),
-(5, 4, 3, 1, '100.00'),
-(6, 5, 3, 1, '100.00');
+(1, 1, 1, 1, 30.00),
+(2, 2, 2, 1, 50.00),
+(3, 3, 2, 1, 50.00),
+(4, 3, 3, 1, 100.00),
+(5, 4, 3, 1, 100.00),
+(6, 5, 3, 1, 100.00);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carro`
+-- Estrutura para tabela `carro`
 --
 
 CREATE TABLE `carro` (
@@ -83,10 +83,10 @@ CREATE TABLE `carro` (
   `ano` int(11) NOT NULL,
   `codcliente` int(11) NOT NULL,
   `codmodelo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `carro`
+-- Despejando dados para a tabela `carro`
 --
 
 INSERT INTO `carro` (`codcarro`, `placa`, `ano`, `codcliente`, `codmodelo`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `carro` (`codcarro`, `placa`, `ano`, `codcliente`, `codmodelo`) VALU
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -115,28 +115,28 @@ CREATE TABLE `cliente` (
   `email` varchar(100) NOT NULL,
   `codendereco` int(11) NOT NULL,
   `datacadastro` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`codcliente`, `nome`, `datanascimento`, `telefone`, `email`, `codendereco`, `datacadastro`) VALUES
 (1, 'Ana Paula', '1988-04-15', '11999990000', 'ana@gmail.com', 1, '2025-07-10'),
-(2, 'João Silva', '1990-01-22', '11988887777', 'joao@gmail.com', 2, '2025-12-22'),
-(3, 'Carlos Souza', '1985-06-10', '11912345678', 'carlos@gmail.com', 3, '2025-11-06'),
-(4, 'Fernanda Lima', '2000-08-30', '11955556666', 'fernanda@gmail.com', 4, '2025-10-31'),
-(5, 'Pedro Alves', '1975-11-09', '11944443333', 'pedro@gmail.com', 5, '2025-07-07'),
-(6, 'Marina Duarte', '1995-07-25', '11922221111', 'marina@gmail.com', 1, '2025-11-16'),
-(7, 'Lucas Rocha', '1998-03-17', '11933334444', 'lucas@gmail.com', 2, '2025-08-10'),
-(8, 'Bruno Ferreira', '1992-09-12', '11987654321', 'bruno@gmail.com', 6, '2025-09-13'),
-(9, 'Larissa Martins', '1987-02-28', '11911223344', 'larissa@gmail.com', 7, '2025-01-31'),
-(10, 'Diego Oliveira', '1993-12-05', '11922334455', 'diego@gmail.com', 8, '2025-11-10');
+(2, 'João Silva', '1990-01-22', '11988887777', 'joao@gmail.com', 2, '2025-07-10'),
+(3, 'Carlos Souza', '1985-06-10', '11912345678', 'carlos@gmail.com', 3, '2025-07-11'),
+(4, 'Fernanda Lima', '2000-08-30', '11955556666', 'fernanda@gmail.com', 4, '2025-07-12'),
+(5, 'Pedro Alves', '1975-11-09', '11944443333', 'pedro@gmail.com', 5, '2025-07-12'),
+(6, 'Marina Duarte', '1995-07-25', '11922221111', 'marina@gmail.com', 1, '2025-07-14'),
+(7, 'Lucas Rocha', '1998-03-17', '11933334444', 'lucas@gmail.com', 2, '2025-08-15'),
+(8, 'Bruno Ferreira', '1992-09-12', '11987654321', 'bruno@gmail.com', 6, '2025-08-16'),
+(9, 'Larissa Martins', '1987-02-28', '11911223344', 'larissa@gmail.com', 7, '2025-08-17'),
+(10, 'Diego Oliveira', '1993-12-05', '11922334455', 'diego@gmail.com', 8, '2025-08-18');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `endereco`
+-- Estrutura para tabela `endereco`
 --
 
 CREATE TABLE `endereco` (
@@ -147,10 +147,10 @@ CREATE TABLE `endereco` (
   `cidade` varchar(50) NOT NULL,
   `estado` char(2) NOT NULL,
   `cep` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `endereco`
+-- Despejando dados para a tabela `endereco`
 --
 
 INSERT INTO `endereco` (`codendereco`, `rua`, `num`, `bairro`, `cidade`, `estado`, `cep`) VALUES
@@ -166,16 +166,16 @@ INSERT INTO `endereco` (`codendereco`, `rua`, `num`, `bairro`, `cidade`, `estado
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `marca`
+-- Estrutura para tabela `marca`
 --
 
 CREATE TABLE `marca` (
   `codmarca` int(11) NOT NULL,
   `marca` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `marca`
+-- Despejando dados para a tabela `marca`
 --
 
 INSERT INTO `marca` (`codmarca`, `marca`) VALUES
@@ -193,17 +193,17 @@ INSERT INTO `marca` (`codmarca`, `marca`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `modelo`
+-- Estrutura para tabela `modelo`
 --
 
 CREATE TABLE `modelo` (
   `codmodelo` int(11) NOT NULL,
   `modelo` varchar(50) NOT NULL,
   `codmarca` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `modelo`
+-- Despejando dados para a tabela `modelo`
 --
 
 INSERT INTO `modelo` (`codmodelo`, `modelo`, `codmarca`) VALUES
@@ -241,48 +241,48 @@ INSERT INTO `modelo` (`codmodelo`, `modelo`, `codmarca`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `servico`
+-- Estrutura para tabela `servico`
 --
 
 CREATE TABLE `servico` (
   `codservico` int(11) NOT NULL,
   `servico` varchar(100) NOT NULL,
   `valor` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `servico`
+-- Despejando dados para a tabela `servico`
 --
 
 INSERT INTO `servico` (`codservico`, `servico`, `valor`) VALUES
-(1, 'Lavagem Simples', '30.00'),
-(2, 'Lavagem Completa', '50.00'),
-(3, 'Higienização de Estofado', '100.00'),
-(4, 'Cristalização', '120.00'),
-(5, 'Lavagem Técnica de Motor', '80.00'),
-(6, 'Descontaminação de Pintura', '150.00'),
-(7, 'Enceramento Manual', '90.00'),
-(8, 'Hidratação de Couro', '120.00'),
-(9, 'Limpeza de Tapetes', '40.00'),
-(10, 'Higienização de Ar-Condicionado', '100.00'),
-(11, 'Revitalização de Faróis', '70.00'),
-(12, 'Impermeabilização de Estofados', '140.00'),
-(13, 'Vitrificação de Vidros', '50.00'),
-(14, 'Aspirador Interno', '25.00');
+(1, 'Lavagem Simples', 30.00),
+(2, 'Lavagem Completa', 50.00),
+(3, 'Higienização de Estofado', 100.00),
+(4, 'Cristalização', 120.00),
+(5, 'Lavagem Técnica de Motor', 80.00),
+(6, 'Descontaminação de Pintura', 150.00),
+(7, 'Enceramento Manual', 90.00),
+(8, 'Hidratação de Couro', 120.00),
+(9, 'Limpeza de Tapetes', 40.00),
+(10, 'Higienização de Ar-Condicionado', 100.00),
+(11, 'Revitalização de Faróis', 70.00),
+(12, 'Impermeabilização de Estofados', 140.00),
+(13, 'Vitrificação de Vidros', 50.00),
+(14, 'Aspirador Interno', 25.00);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `atendimento`
+-- Índices de tabela `atendimento`
 --
 ALTER TABLE `atendimento`
   ADD PRIMARY KEY (`codos`),
   ADD KEY `codcarro` (`codcarro`);
 
 --
--- Índices para tabela `atendimento_servico`
+-- Índices de tabela `atendimento_servico`
 --
 ALTER TABLE `atendimento_servico`
   ADD PRIMARY KEY (`codsatendimentoservico`),
@@ -290,7 +290,7 @@ ALTER TABLE `atendimento_servico`
   ADD KEY `codservico` (`codservico`);
 
 --
--- Índices para tabela `carro`
+-- Índices de tabela `carro`
 --
 ALTER TABLE `carro`
   ADD PRIMARY KEY (`codcarro`),
@@ -299,7 +299,7 @@ ALTER TABLE `carro`
   ADD KEY `codmodelo` (`codmodelo`);
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`codcliente`),
@@ -307,32 +307,32 @@ ALTER TABLE `cliente`
   ADD KEY `codendereco` (`codendereco`);
 
 --
--- Índices para tabela `endereco`
+-- Índices de tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`codendereco`);
 
 --
--- Índices para tabela `marca`
+-- Índices de tabela `marca`
 --
 ALTER TABLE `marca`
   ADD PRIMARY KEY (`codmarca`);
 
 --
--- Índices para tabela `modelo`
+-- Índices de tabela `modelo`
 --
 ALTER TABLE `modelo`
   ADD PRIMARY KEY (`codmodelo`),
   ADD KEY `codmarca` (`codmarca`);
 
 --
--- Índices para tabela `servico`
+-- Índices de tabela `servico`
 --
 ALTER TABLE `servico`
   ADD PRIMARY KEY (`codservico`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -384,37 +384,37 @@ ALTER TABLE `servico`
   MODIFY `codservico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `atendimento`
+-- Restrições para tabelas `atendimento`
 --
 ALTER TABLE `atendimento`
   ADD CONSTRAINT `atendimento_ibfk_1` FOREIGN KEY (`codcarro`) REFERENCES `carro` (`codcarro`);
 
 --
--- Limitadores para a tabela `atendimento_servico`
+-- Restrições para tabelas `atendimento_servico`
 --
 ALTER TABLE `atendimento_servico`
   ADD CONSTRAINT `atendimento_servico_ibfk_1` FOREIGN KEY (`codos`) REFERENCES `atendimento` (`codos`),
   ADD CONSTRAINT `atendimento_servico_ibfk_2` FOREIGN KEY (`codservico`) REFERENCES `servico` (`codservico`);
 
 --
--- Limitadores para a tabela `carro`
+-- Restrições para tabelas `carro`
 --
 ALTER TABLE `carro`
   ADD CONSTRAINT `carro_ibfk_1` FOREIGN KEY (`codcliente`) REFERENCES `cliente` (`codcliente`),
   ADD CONSTRAINT `carro_ibfk_2` FOREIGN KEY (`codmodelo`) REFERENCES `modelo` (`codmodelo`);
 
 --
--- Limitadores para a tabela `cliente`
+-- Restrições para tabelas `cliente`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`codendereco`) REFERENCES `endereco` (`codendereco`);
 
 --
--- Limitadores para a tabela `modelo`
+-- Restrições para tabelas `modelo`
 --
 ALTER TABLE `modelo`
   ADD CONSTRAINT `modelo_ibfk_1` FOREIGN KEY (`codmarca`) REFERENCES `marca` (`codmarca`);
